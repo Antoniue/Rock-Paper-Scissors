@@ -60,6 +60,12 @@ function game(winnertonum)
     let winner = "";
     let loserScore;
     let win;
+    if(winnertonum == 0)
+    {
+    console.log("You cheeky fucker, yes I know you can put 0, you retard")
+    }
+    else
+    {
     while(computernum < winnertonum && playernum < winnertonum)
     {
         win = playRound(getComputerChoice(), getPlayerChoice());
@@ -79,6 +85,7 @@ function game(winnertonum)
         loserScore = computernum;
     }
     console.log(winner + "With a score of " + winnertonum + " - " + loserScore);
+}
 }
 
 function chooseRoundNum()
