@@ -9,88 +9,98 @@ function getComputerChoice()
 
 function playRound(computerSelection, playerSelection)
 {
-    playerSelection = playerSelection.toLowerCase();
-
-    if(computerSelection == playerSelection)
+    const resultMsg = document.querySelector('.result');
+    const playerScore = document.querySelector('.playerScore');
+    const computerScore = document.querySelector('.computerScore');
+    if(computerSelection === playerSelection)
     {
         console.log("It's a tie! both chose " + playerSelection);
+        resultMsg.innerHTML = "It's a tie! both chose " + playerSelection;
         return "tie";
     }
-    if(computerSelection == "rock" && playerSelection == "paper")
+    if(computerSelection === "rock" && playerSelection === "paper")
     {
         console.log("Congratulations! You chose Paper while the Computer chose Rock!");
+        resultMsg.innerHTML = "Congratulations! You chose Paper while the Computer chose Rock!";
+        playerResult++;
+        playerScore.innerHTML = playerResult;
         return "player";
     }
-    if(computerSelection == "rock" && playerSelection == "scissors")
+    if(computerSelection === "rock" && playerSelection === "scissors")
     {
         console.log("Awh, You chose Scissors, Computer chose Rock, you Lose! XAXAXA");
+        resultMsg.innerHTML = "Awh, You chose Scissors, Computer chose Rock, you Lose! XAXAXA";
+        computeResult++;
+        computerScore.innerHTML = computeResult;
         return "computer";
     }
-    if(computerSelection == "paper" && playerSelection == "rock")
+    if(computerSelection === "paper" && playerSelection === "rock")
     {
         console.log("Awh, You chose Rock, Computer chose Paper, you Lose! XAXAXA");
+        resultMsg.innerHTML = "Awh, You chose Rock, Computer chose Paper, you Lose! XAXAXA";
+        computeResult++;
+        computerScore.innerHTML = computeResult;
         return "computer";
     }
-    if(computerSelection == "paper" && playerSelection == "scissors")
+    if(computerSelection === "paper" && playerSelection === "scissors")
     {
         console.log("Congratulations! You chose Scissors while the Computer chose Paper!");
+        resultMsg.innerHTML = "Congratulations! You chose Scissors while the Computer chose Paper!";
+        playerResult++;
+        playerScore.innerHTML = playerResult;
         return "player";
     }
-    if(computerSelection == "scissors" && playerSelection == "paper")
+    if(computerSelection === "scissors" && playerSelection === "paper")
     {
         console.log("Awh, You chose Paper, Computer chose Scissors, you Lose! XAXAXA");
+        resultMsg.innerHTML = "Awh, You chose Paper, Computer chose Scissors, you Lose! XAXAXA";
+        computeResult++;
+        computerScore.innerHTML = computeResult;
         return "computer";
     }
-    if(computerSelection == "scissors" && playerSelection == "rock")
+    if(computerSelection === "scissors" && playerSelection === "rock")
     {
         console.log("Congratulations! You chose Rock while the Computer chose Scissors!");
+        resultMsg.innerHTML = "Congratulations! You chose Rock while the Computer chose Scissors!";
+        playerResult++;
+        playerScore.innerHTML = playerResult;
         return "player";
     }
 }
 
-function getPlayerChoice()
+function announceWinner()
 {
-    return prompt("Choose, Rock, Paper, Scissors! (Capitalization does not matter)");
-}
-
-function game(winnertonum)
-{
-    let computernum = 0;
-    let playernum = 0;
-    let winner = "";
-    let loserScore;
-    let win;
-    if(winnertonum == 0)
-    {
-    console.log("You cheeky fucker, yes I know you can put 0, you retard")
-    }
+    let string = "Game over! winner is: ";
+    if(playerResult > computeResult)
+    alert(string+"the Player!");
     else
-    {
-    while(computernum < winnertonum && playernum < winnertonum)
-    {
-        win = playRound(getComputerChoice(), getPlayerChoice());
-        if(win == "player")
-        playernum++;
-        else if (win == "computer")
-        computernum++;
-    }
-    if(computernum == winnertonum)
-    {
-        winner = "The Computer wins "
-        loserScore = playernum;
-    }
-    if(playernum == winnertonum)
-    {
-        winner = "The Player wins "
-        loserScore = computernum;
-    }
-    console.log(winner + "With a score of " + winnertonum + " - " + loserScore);
-}
+    alert(string+"the Computer!");
+    playerResult = 0;
+    computeResult = 0;
+    roundNumber = 0;
 }
 
-function chooseRoundNum()
+
+let playerResult = 0;
+let computeResult = 0;
+
+let roundNumber;
+const roundNumberButton = document.querySelector('.submitRoundNum');
+roundNumberButton.addEventListener('click', () => {
+    roundNumber = document.querySelector('.roundInput').value;
+    console.log(roundNumber);
+    if(roundNumber != null)
 {
-    game(prompt("Please choose first to which round wins"));
+const buttons = document.querySelectorAll('.playerButton');
+buttons.forEach(playerButton => {
+playerButton.addEventListener('click', () => {
+    playRound(getComputerChoice(), playerButton.getAttribute('id'));
+    if(playerResult == roundNumber || computeResult == roundNumber)
+    alert(announceWinner());
+});
+});
 }
+});
 
-chooseRoundNum();
+
+

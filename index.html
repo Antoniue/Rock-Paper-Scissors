@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script type="text/javascript" src="./skrrript.js"></script>
+    <title>Rock Paper Scissors!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="maingame">
+     <div class="header">
+         Rock Paper Scissors!
+     </div>
+     <div class="roundNum">
+         <div class="roundText">Please choose round number first to which wins!</div>
+         <textarea class="roundInput" placeholder="Type number here"></textarea>
+         <button class="submitRoundNum">Let's play!</button>
+     </div>
+     <div class="gameUI">
+         <div class="score">
+            <div class="scoreHeader">Score:</div>
+            <div class="scores">
+             <div class="playerScore">0</div>
+             <div class="computerScore">0</div>
+            </div>
+         </div>
+         <div class="picks">
+             <div class="playerPicks">
+                <h1>Go ahead and pick!</h1>
+                <button class="playerButton" id="rock"></button>
+                <button class="playerButton" id="paper"></button>
+                <button class="playerButton" id="scissors"></button>
+             </div>
+             <div class="computerPicks">
+                 <h1>Computer picks:</h1>
+             </div>
+         </div>
+         <div class="result">
+             Result
+         </div>
+     </div>
+     <div class="footer">
+         Copyright © Antoniue/Versti
+     </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="./skrrript.js"></script>
 </body>
 </html>
