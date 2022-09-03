@@ -78,6 +78,7 @@ function announceWinner()
     playerResult = 0;
     computeResult = 0;
     roundNumber = 0;
+    window.location.reload();
 }
 
 
@@ -96,7 +97,7 @@ buttons.forEach(playerButton => {
 playerButton.addEventListener('click', () => {
     playRound(getComputerChoice(), playerButton.getAttribute('id'));
     if(playerResult == roundNumber || computeResult == roundNumber)
-    alert(announceWinner());
+    announceWinner();
 });
 });
 }
