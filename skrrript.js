@@ -89,6 +89,16 @@ let roundNumber;
 const roundNumberButton = document.querySelector('.submitRoundNum');
 roundNumberButton.addEventListener('click', () => {
     roundNumber = document.querySelector('.roundInput').value;
+    if(roundNumber == 0)
+    {
+        alert("Can't play 0 rounds!");
+        window.location.reload();
+    }
+    if(isNaN(roundNumber))
+    {
+        alert("You dumbass please use a number");
+        window.location.reload();
+    }
     console.log(roundNumber);
     if(roundNumber != null)
 {
@@ -101,7 +111,7 @@ playerButton.addEventListener('click', () => {
 });
 });
 }
-});
+},{ once: true } );
 
 
 
