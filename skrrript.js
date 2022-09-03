@@ -70,6 +70,10 @@ function playRound(computerSelection, playerSelection)
 
 function announceWinner()
 {
+    const playerScore = document.querySelector('.playerScore');
+    const computerScore = document.querySelector('.computerScore');
+    playerScore.innerHTML = playerResult;
+    computerScore.innerHTML = computeResult;
     let string = "Game over! winner is: ";
     if(playerResult > computeResult)
     alert(string+"the Player!");
